@@ -5,6 +5,8 @@ pipeline {
 apiVersion: v1
 kind: Pod
 spec:
+  imagePullSecrets:
+  - name: registry-credentials
   containers:
   - name: build-agent
     image: registry.yjimmy.dev/jenkins-build-agent:latest
