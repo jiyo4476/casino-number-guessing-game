@@ -1,5 +1,20 @@
 pipeline {
-    agent any
+    agent {
+	kubernetes {
+            yaml '''
+apiVersion: v1
+kind: Pod
+spec:
+  containers:
+  - name: build-agent
+    image: registry.yjimmy.dev/jenkins-build-agent:latest
+    command:
+    - sleep
+    args:
+    - infinity
+'''
+        }
+	}
     stages {
         stage('Build') {
             steps {
