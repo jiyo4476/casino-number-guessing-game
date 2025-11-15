@@ -1,15 +1,13 @@
 pipeline {
     agent {
-	kubernetes {
+        kubernetes {
             yaml '''
 apiVersion: v1
 kind: Pod
 spec:
-  imagePullSecrets:
-  - name: registry-credentials
   containers:
   - name: build-agent
-    image: registry.yjimmy.dev/jenkins-build-agent:latest
+    image: ubuntu:22.04
     command:
     - sleep
     args:
